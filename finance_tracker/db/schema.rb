@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_180741) do
+ActiveRecord::Schema.define(version: 2020_01_16_114401) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_10_29_180741) do
   end
 
   create_table "user_stocks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "stock_id"
+    t.integer "user_id", null: false
+    t.integer "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stock_id"], name: "index_user_stocks_on_stock_id"
@@ -54,4 +54,6 @@ ActiveRecord::Schema.define(version: 2020_10_29_180741) do
 
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "user_stocks", "stocks"
+  add_foreign_key "user_stocks", "users"
 end
