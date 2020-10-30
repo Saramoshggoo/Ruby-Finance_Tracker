@@ -1,0 +1,34 @@
+
+         <% if ! @friendship.empty? %>
+        <table class="table table-bordered table-haver">
+        <thead>
+            <tr>
+            <th scope="col">Email</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+           <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+       
+            <% @friendship.each do |friend|%>
+                <tr>
+                <td><%=friend.email%></td>
+                <td><%=friend.first_name%></td>
+                <td><%=friend.last_name%></td>
+          
+                <td>
+                           
+                 <%= link_to 'Stop following', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure?'},
+                                          class: 'btn btn-sm btn-warning' %>
+                
+                
+                
+                
+                </td>
+                </tr>
+            <%end%>
+       
+        </tbody>
+        </table>
+         <%end%>
